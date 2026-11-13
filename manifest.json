@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Spotube Ad Blocker",
+  "version": "2.0",
+  "description": "Intensive ad and tracker blocker tailored for YouTube and Spotify.",
+  "permissions": [
+    "declarativeNetRequest",
+    "declarativeNetRequestFeedback",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "*://*.youtube.com/*",
+    "*://*.spotify.com/*",
+    "*://*.doubleclick.net/*",
+    "*://*.googlesyndication.com/*"
+  ],
+  "declarative_net_request": {
+    "rule_resources": [{
+      "id": "ruleset_1",
+      "enabled": true,
+      "path": "rules.json"
+    }]
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
